@@ -32,7 +32,7 @@ Claude has no built-in way to move your chats between two personal accounts: a d
 
 ## Install
 
-1. Download [`account-handoff.zip`](../downloads/account-handoff.zip), or zip the `skills/account-handoff/` folder yourself (or run `python3 scripts/build_zips.py`) so that the folder is the top level of the ZIP.
+1. Download [`account-handoff.zip`](../downloads/account-handoff.zip), or zip the `skills/account-handoff/` folder yourself (or run `python3 tools/build_zips.py`) so that the folder is the top level of the ZIP.
 2. In Claude, go to **Settings > Capabilities**, upload the skill, and enable it.
 
 Run `scripts/` on your own machine only if you want the helpers outside Claude; inside Claude it runs them for you.

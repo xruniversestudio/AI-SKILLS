@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Build one upload-ready ZIP per skill into dist/.
+"""Build one upload-ready ZIP per skill into downloads/.
 
-Usage: python3 scripts/build_zips.py [skill-name ...]
+Usage: python3 tools/build_zips.py [skill-name ...]
 Each ZIP has the skill folder as its top level, as Claude requires.
 """
 import os, re, sys, zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILLS = os.path.join(ROOT, "skills")
-DIST = os.path.join(ROOT, "dist")
+DIST = os.path.join(ROOT, "downloads")
 
 
 def main():

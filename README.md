@@ -10,24 +10,26 @@ A collection of Claude skills, each self-contained in its own folder. Download a
 
 ## Install a skill
 
-1. Download the skill's ZIP from the table (or run `python3 scripts/build_zips.py` to build all of them into `dist/`).
+1. Download the skill's ZIP from the table (`downloads/` is the only place ZIPs live).
 2. In Claude: **Settings > Capabilities**, upload the ZIP, enable it.
 
 ## Layout
 
 ```
-skills/<skill-name>/        one folder per skill; the folder name equals `name` in SKILL.md
-  SKILL.md
-  references/  scripts/     optional, stay inside the skill folder
-docs/<skill-name>.md        long-form docs for each skill
-downloads/<skill-name>.zip  upload-ready ZIPs
-scripts/build_zips.py       rebuilds the ZIPs (checks folder name = skill name)
+skills/<skill-name>/        the skills themselves (what Claude loads)
+  SKILL.md                  folder name = `name` in this file
+  references/  scripts/     optional helpers that belong to that skill only
+docs/<skill-name>.md        human-readable docs per skill
+downloads/<skill-name>.zip  upload-ready ZIPs, generated, never edited by hand
+tools/build_zips.py         repo maintenance: rebuilds downloads/ from skills/
 ```
+
+Python files live in two kinds of places: `skills/*/scripts/` are helpers a skill runs inside Claude; `tools/` is for maintaining this repository.
 
 ## Add a new skill
 
 1. Create `skills/<new-skill>/SKILL.md` (frontmatter `name` must equal the folder name).
-2. Run `python3 scripts/build_zips.py`, then copy `dist/<new-skill>.zip` to `downloads/`.
+2. Run `python3 tools/build_zips.py` (rebuilds `downloads/`).
 3. Add a row to the table above and a page in `docs/`.
 
 ## License
@@ -44,4 +46,4 @@ MIT, see [LICENSE](LICENSE).
 |---|---|---|
 | `account-handoff` | نقل معرفتك لحساب Claude جديد بدون ما تبدأ من الصفر (ذاكرة، تعليمات المشاريع، المهارات، الـ connectors، خلاصات المحادثات) | [account-handoff.zip](downloads/account-handoff.zip) |
 
-لإضافة مهارة جديدة: أنشئ `skills/<الاسم>/SKILL.md` (اسم المجلد = حقل `name`)، شغّل `python3 scripts/build_zips.py`، انسخ الـ ZIP إلى `downloads/`، وأضف سطراً بالجدول.
+لإضافة مهارة جديدة: أنشئ `skills/<الاسم>/SKILL.md` (اسم المجلد = حقل `name`)، شغّل `python3 tools/build_zips.py` (بيحدّث `downloads/`)، وأضف سطراً بالجدول.
